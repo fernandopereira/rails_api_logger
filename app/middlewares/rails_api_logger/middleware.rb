@@ -69,7 +69,7 @@ module RailsApiLogger
       else
         body
       end
-    rescue JSON::ParserError, ArgumentError
+    rescue JSON::ParserError, ArgumentError, NoMethodError
       body
     end
 
