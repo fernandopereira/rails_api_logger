@@ -63,13 +63,13 @@ module RailsApiLogger
       return unless body.present?
 
       if body.respond_to?(:to_ary)
-        JSON.parse(body.to_ary[0])
+        JSON.parse(body.to_ary)
       elsif body.respond_to?(:body)
         JSON.parse(body.body)
       else
         body
       end
-    rescue JSON::ParserError, ArgumentError, NoMethodError
+    rescue JSON::ParserError, ArgumentError
       body
     end
 
