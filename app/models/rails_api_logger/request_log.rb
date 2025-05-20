@@ -31,7 +31,7 @@ module RailsApiLogger
           body
         end
       end
-      url = request.uri.host + request.path
+      url = request.try(:original_url) || request.uri.host + request.path
       create(path: url, request_body: body, method: request.method, started_at: Time.current, loggable: loggable)
     end
 
